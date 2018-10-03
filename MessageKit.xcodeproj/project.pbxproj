@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01A40BB1216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40BB0216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift */; };
+		01A40BB32164990500B4D42E /* RSVPPhotoLikeMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40BB22164990500B4D42E /* RSVPPhotoLikeMessageCell.swift */; };
 		0EE91E661FDEC888005420A2 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE91E651FDEC887005420A2 /* CGRect+Extensions.swift */; };
 		0EF0888C206F7E83007F2F58 /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */; };
 		1F066E131FD90BB600E11013 /* MessagesViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FC8CB1FD2700B006CC979 /* MessagesViewControllerSpec.swift */; };
@@ -112,6 +114,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01A40BB0216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSVPPhotoLikeMessageSizeCalculator.swift; sourceTree = "<group>"; };
+		01A40BB22164990500B4D42E /* RSVPPhotoLikeMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSVPPhotoLikeMessageCell.swift; sourceTree = "<group>"; };
 		0EE91E651FDEC887005420A2 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		1F066E101FD90A0600E11013 /* MessageLabelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLabelSpec.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 				B7A03F7A1F866B85006AEF79 /* MessageCollectionViewCell.swift */,
 				1F6C040B206A2891007BDE44 /* MessageContentCell.swift */,
 				B7A03F361F866946006AEF79 /* TextMessageCell.swift */,
+				01A40BB22164990500B4D42E /* RSVPPhotoLikeMessageCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				1FE783A120662905007FA024 /* TextMessageSizeCalculator.swift */,
 				1FE783A3206629A5007FA024 /* MediaMessageSizeCalculator.swift */,
 				1FE783A5206629C2007FA024 /* LocationMessageSizeCalculator.swift */,
+				01A40BB0216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift */,
 				0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */,
 			);
 			path = Layout;
@@ -601,6 +607,7 @@
 				B7A03F5C1F8669CA006AEF79 /* MessageCellDelegate.swift in Sources */,
 				1FF377A420087C82004FD648 /* MessageKitError.swift in Sources */,
 				B7A03F4A1F86694F006AEF79 /* MessageInputBar.swift in Sources */,
+				01A40BB1216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift in Sources */,
 				1F6C040E206A2AF4007BDE44 /* MessageReusableView.swift in Sources */,
 				B7A03F4B1F86694F006AEF79 /* MessageContainerView.swift in Sources */,
 				B7A03F281F866895006AEF79 /* LocationMessageSnapshotOptions.swift in Sources */,
@@ -614,6 +621,7 @@
 				1FE783A220662905007FA024 /* TextMessageSizeCalculator.swift in Sources */,
 				B7A03F2E1F866895006AEF79 /* MessageKind.swift in Sources */,
 				B7A03F7B1F866B85006AEF79 /* MessageCollectionViewCell.swift in Sources */,
+				01A40BB32164990500B4D42E /* RSVPPhotoLikeMessageCell.swift in Sources */,
 				B7A03F6B1F8669EB006AEF79 /* UIColor+Extensions.swift in Sources */,
 				B7A03F5E1F8669CA006AEF79 /* MessagesLayoutDelegate.swift in Sources */,
 				B7A03F261F866895006AEF79 /* MessageKitDateFormatter.swift in Sources */,

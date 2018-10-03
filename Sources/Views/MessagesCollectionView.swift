@@ -65,6 +65,9 @@ open class MessagesCollectionView: UICollectionView {
         register(TextMessageCell.self)
         register(MediaMessageCell.self)
         register(LocationMessageCell.self)
+// rsvp <
+        register(RSVPPhotoLikeMessageCell.self)
+// >
         register(MessageReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         register(MessageReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter)
     }

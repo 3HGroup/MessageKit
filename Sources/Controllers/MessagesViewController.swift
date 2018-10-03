@@ -192,6 +192,12 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
             let cell = messagesCollectionView.dequeueReusableCell(LocationMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
+// rsvp <
+        case .photoLike:
+            let cell = messagesCollectionView.dequeueReusableCell(RSVPPhotoLikeMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
+// >
         case .custom:
             fatalError(MessageKitError.customDataUnresolvedCell)
         }
