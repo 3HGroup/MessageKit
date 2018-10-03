@@ -55,8 +55,11 @@ extension MessagesViewController {
         guard let keyboardEndFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
         
         guard !isMessagesControllerBeingDismissed else { return }
-        
-        let newBottomInset = view.frame.height - keyboardEndFrame.minY - iPhoneXBottomInset
+
+// < rsvp
+//        let newBottomInset = view.frame.height - keyboardEndFrame.minY - iPhoneXBottomInset
+        let newBottomInset = view.frame.height + (UIScreen.main.bounds.height - self.preferredContentSize.height) - keyboardEndFrame.minY - iPhoneXBottomInset
+// >
         
         let differenceOfBottomInset = newBottomInset - messageCollectionViewBottomInset
         
