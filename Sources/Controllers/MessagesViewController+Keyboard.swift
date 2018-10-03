@@ -56,7 +56,7 @@ extension MessagesViewController {
         
         guard !isMessagesControllerBeingDismissed else { return }
 
-// < rsvp
+// rsvp < 
 //        let newBottomInset = view.frame.height - keyboardEndFrame.minY - iPhoneXBottomInset
         var newBottomInset = view.frame.height + (UIScreen.main.bounds.height - self.preferredContentSize.height) - keyboardEndFrame.minY - iPhoneXBottomInset
         if let inputAccessory = self.inputAccessoryView {

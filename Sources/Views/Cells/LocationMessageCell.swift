@@ -33,6 +33,10 @@ open class LocationMessageCell: MessageContentCell {
 
     /// The image view holding the map image.
     open var imageView = UIImageView()
+
+// rsvp <
+    open var addressLabel = UILabel()
+// >
     
     private weak var snapShotter: MKMapSnapshotter?
 
@@ -41,6 +45,18 @@ open class LocationMessageCell: MessageContentCell {
         imageView.contentMode = .scaleAspectFill
         messageContainerView.addSubview(imageView)
         messageContainerView.addSubview(activityIndicator)
+// rsvp <
+        addressLabel.numberOfLines = 1
+        addressLabel.lineBreakMode = .byTruncatingTail
+        addressLabel.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        addressLabel.font = UIFont.systemFont(ofSize: 13)
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageContainerView.addSubview(addressLabel)
+        addressLabel.addConstraints(nil, left: messageContainerView.leftAnchor,
+                                    bottom: messageContainerView.bottomAnchor, right: messageContainerView.rightAnchor,
+                                    topConstant: -1, leftConstant: 0,
+                                    bottomConstant: 0, rightConstant: 0, widthConstant: -1, heightConstant: 30)
+// >
         setupConstraints()
     }
 
@@ -67,6 +83,10 @@ open class LocationMessageCell: MessageContentCell {
         guard case let .location(locationItem) = message.kind else { fatalError("") }
 
         activityIndicator.startAnimating()
+        
+// rsvp <
+        addressLabel.text = "  \(locationItem.address)"
+// >
 
         let snapshotOptions = MKMapSnapshotOptions()
         snapshotOptions.region = MKCoordinateRegion(center: locationItem.location.coordinate, span: options.span)

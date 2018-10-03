@@ -33,4 +33,7 @@ public protocol LocationItem {
     /// The size of the location item.
     var size: CGSize { get }
 
+// rsvp <
+    var address: String { get }
+// >
 }
