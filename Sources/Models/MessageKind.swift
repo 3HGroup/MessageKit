@@ -56,6 +56,10 @@ public enum MessageKind {
     ///   - `collectionView(_:cellForItemAt indexPath: IndexPath) -> UICollectionViewCell`
     ///   - `cellSizeCalculatorForItem(at indexPath: IndexPath) -> CellSizeCalculator`
     case custom(Any?)
+    
+// rsvp <
+    case tag(NSAttributedString)
+//  >
 
     // MARK: - Not supported yet
 

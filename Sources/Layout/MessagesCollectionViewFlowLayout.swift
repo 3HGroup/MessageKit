@@ -140,7 +140,10 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         switch message.kind {
         case .text:
             return textMessageSizeCalculator
-        case .attributedText:
+// rsvp <
+//        case .attributedText:
+        case .attributedText, .tag:
+// >
             return attributedTextMessageSizeCalculator
         case .emoji:
             return emojiMessageSizeCalculator

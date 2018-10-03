@@ -177,7 +177,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
 
         switch message.kind {
-        case .text, .attributedText, .emoji:
+// rsvp <
+//        case .text, .attributedText, .emoji:
+        case .text, .attributedText, .emoji, .tag:
+// >
             let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
