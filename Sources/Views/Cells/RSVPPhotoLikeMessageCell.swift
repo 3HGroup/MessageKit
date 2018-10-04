@@ -37,7 +37,7 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         imageView.constraint(equalTo: RSVP_likedPhotoSize)
         
         NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: RSVP_photoLikeCellPadding),
+            imageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -2 * RSVP_photoLikeCellPadding),
             imageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
             imageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
             
