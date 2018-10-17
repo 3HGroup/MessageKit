@@ -177,10 +177,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
 
         switch message.kind {
-// rsvp <
-//        case .text, .attributedText, .emoji:
-        case .text, .attributedText, .emoji, .tag:
-// >
+        case .text, .attributedText, .emoji:
             let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
@@ -193,8 +190,16 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
 // rsvp <
+        case .tag:
+            let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
         case .photoLike:
             let cell = messagesCollectionView.dequeueReusableCell(RSVPPhotoLikeMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
+        case .rsvpSystem:
+            let cell = messagesCollectionView.dequeueReusableCell(RSVPSystemMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
 // >
