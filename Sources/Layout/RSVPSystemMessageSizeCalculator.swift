@@ -31,7 +31,6 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         var messageContainerSize: CGSize
         let attributedText: NSAttributedString
         
-        var titleHeight: CGFloat = 0
         var iconWidth: CGFloat = 0
         
         switch message.kind {
@@ -40,12 +39,10 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
             attributedText = NSAttributedString(string: systemItem.text, attributes: [.font: UIFont.systemFont(ofSize: 15)])
             
             switch systemItem.style {
-            case .favorite:
-                titleHeight = 0
-                iconWidth = RSVP_SystemMsgCellIconSize
-            case .profileInfo:
-                titleHeight = RSVP_SystemMsgCellTitleHeight
+            case .sysDefault:
                 iconWidth = 0
+            case .favorite:
+                iconWidth = RSVP_SystemMsgCellIconSize
             }
         default:
             fatalError("messageContainerSize received unhandled MessageDataType: \(message.kind)")
@@ -60,7 +57,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         messageContainerSize.height += messageInsets.vertical
         
         messageContainerSize.width += (iconWidth + 2 * RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
-        messageContainerSize.height += (titleHeight + RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
+        messageContainerSize.height += (RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
         
         return messageContainerSize
     }
