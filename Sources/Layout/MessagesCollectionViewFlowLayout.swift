@@ -137,6 +137,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
 // rsvp <
     lazy open var photoLikeMessageSizeCalculator = RSVPPhotoLikeMessageSizeCalculator(layout: self)
     lazy open var rsvpSystemMessageSizeCalculator = RSVPSystemMessageSizeCalculator(layout: self)
+    lazy open var rsvpProfileSummarySizeCalculator = RSVPProfileSummarySizeCalculator(layout: self)
 // >
 
     open func cellSizeCalculatorForItem(at indexPath: IndexPath) -> CellSizeCalculator {
@@ -161,6 +162,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return photoLikeMessageSizeCalculator
         case .rsvpSystem:
             return rsvpSystemMessageSizeCalculator
+        case .rsvpProfileSummary:
+            return rsvpProfileSummarySizeCalculator
 // >
         case .custom:
             fatalError("Must return a CellSizeCalculator for MessageKind.custom(Any?)")

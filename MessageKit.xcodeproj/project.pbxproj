@@ -38,6 +38,9 @@
 		1FF377AC20087DA2004FD648 /* MessagesViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF377AB20087DA2004FD648 /* MessagesViewController+Keyboard.swift */; };
 		38C57C791F9AE3E50043CC03 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C57C781F9AE3E50043CC03 /* SeparatorLine.swift */; };
 		38C57C7C1F9AE4890043CC03 /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C57C7B1F9AE4870043CC03 /* InputStackView.swift */; };
+		7233829A2198EAF9007C70BF /* RSVPProfileSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723382992198EAF9007C70BF /* RSVPProfileSummaryCell.swift */; };
+		7233829C2198EB52007C70BF /* RSVPProfileSummarySizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7233829B2198EB52007C70BF /* RSVPProfileSummarySizeCalculator.swift */; };
+		7233829E2198EC1A007C70BF /* RSVPProfileSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7233829D2198EC1A007C70BF /* RSVPProfileSummaryItem.swift */; };
 		726EE2992174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EE2982174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift */; };
 		726EE29B217453E40079B284 /* RSVPSystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EE29A217453E40079B284 /* RSVPSystemMessageCell.swift */; };
 		726EE29D217459FE0079B284 /* RSVPSystemItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EE29C217459FE0079B284 /* RSVPSystemItem.swift */; };
@@ -145,6 +148,9 @@
 		1FF377AB20087DA2004FD648 /* MessagesViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagesViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		38C57C781F9AE3E50043CC03 /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		38C57C7B1F9AE4870043CC03 /* InputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputStackView.swift; sourceTree = "<group>"; };
+		723382992198EAF9007C70BF /* RSVPProfileSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPProfileSummaryCell.swift; sourceTree = "<group>"; };
+		7233829B2198EB52007C70BF /* RSVPProfileSummarySizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPProfileSummarySizeCalculator.swift; sourceTree = "<group>"; };
+		7233829D2198EC1A007C70BF /* RSVPProfileSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPProfileSummaryItem.swift; sourceTree = "<group>"; };
 		726EE2982174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSystemMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		726EE29A217453E40079B284 /* RSVPSystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSystemMessageCell.swift; sourceTree = "<group>"; };
 		726EE29C217459FE0079B284 /* RSVPSystemItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSystemItem.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 				B7A03F361F866946006AEF79 /* TextMessageCell.swift */,
 				01A40BB22164990500B4D42E /* RSVPPhotoLikeMessageCell.swift */,
 				726EE29A217453E40079B284 /* RSVPSystemMessageCell.swift */,
+				723382992198EAF9007C70BF /* RSVPProfileSummaryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -438,6 +445,7 @@
 				1FD5895F2064E08A004B5081 /* MediaItem.swift */,
 				1FD5896320660C1C004B5081 /* LocationItem.swift */,
 				726EE29C217459FE0079B284 /* RSVPSystemItem.swift */,
+				7233829D2198EC1A007C70BF /* RSVPProfileSummaryItem.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -464,6 +472,7 @@
 				0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */,
 				01A40BB0216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift */,
 				726EE2982174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift */,
+				7233829B2198EB52007C70BF /* RSVPProfileSummarySizeCalculator.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -614,7 +623,9 @@
 				B7A03F601F8669CA006AEF79 /* MessagesDisplayDelegate.swift in Sources */,
 				1FE783A8206633C0007FA024 /* InsetLabel.swift in Sources */,
 				B7A03F5C1F8669CA006AEF79 /* MessageCellDelegate.swift in Sources */,
+				7233829E2198EC1A007C70BF /* RSVPProfileSummaryItem.swift in Sources */,
 				1FF377A420087C82004FD648 /* MessageKitError.swift in Sources */,
+				7233829A2198EAF9007C70BF /* RSVPProfileSummaryCell.swift in Sources */,
 				B7A03F4A1F86694F006AEF79 /* MessageInputBar.swift in Sources */,
 				01A40BB1216498E500B4D42E /* RSVPPhotoLikeMessageSizeCalculator.swift in Sources */,
 				1F6C040E206A2AF4007BDE44 /* MessageReusableView.swift in Sources */,
@@ -632,6 +643,7 @@
 				726EE2992174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift in Sources */,
 				B7A03F2E1F866895006AEF79 /* MessageKind.swift in Sources */,
 				B7A03F7B1F866B85006AEF79 /* MessageCollectionViewCell.swift in Sources */,
+				7233829C2198EB52007C70BF /* RSVPProfileSummarySizeCalculator.swift in Sources */,
 				01A40BB32164990500B4D42E /* RSVPPhotoLikeMessageCell.swift in Sources */,
 				B7A03F6B1F8669EB006AEF79 /* UIColor+Extensions.swift in Sources */,
 				B7A03F5E1F8669CA006AEF79 /* MessagesLayoutDelegate.swift in Sources */,
