@@ -146,6 +146,9 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     lazy open var photoMessageSizeCalculator = MediaMessageSizeCalculator(layout: self)
     lazy open var videoMessageSizeCalculator = MediaMessageSizeCalculator(layout: self)
     lazy open var locationMessageSizeCalculator = LocationMessageSizeCalculator(layout: self)
+// rsvp <
+    lazy open var photoLikeMessageSizeCalculator = RSVPPhotoLikeMessageSizeCalculator(layout: self)
+// >
 
     /// - Note:
     ///   If you override this method, remember to call MessageLayoutDelegate's customCellSizeCalculator(for:at:in:) method for MessageKind.custom messages, if necessary
@@ -167,6 +170,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
 // rsvp <
         case .tag:
             return attributedTextMessageSizeCalculator
+        case .photoLike:
+            return photoLikeMessageSizeCalculator
 // >
         case .custom:
             return messagesLayoutDelegate.customCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView)
