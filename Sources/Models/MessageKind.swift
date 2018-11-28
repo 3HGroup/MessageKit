@@ -56,6 +56,10 @@ public enum MessageKind {
     ///   - MessagesDataSource: customCell(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UICollectionViewCell
     ///   - MessagesLayoutDelegate: customCellSizeCalculator(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CellSizeCalculator
     case custom(Any?)
+    
+// rsvp <
+    case tag(NSAttributedString)
+//  >
 
     // MARK: - Not supported yet
 

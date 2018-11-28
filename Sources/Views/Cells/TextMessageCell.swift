@@ -84,6 +84,12 @@ open class TextMessageCell: MessageContentCell {
                 if let font = messageLabel.messageLabelFont {
                     messageLabel.font = font
                 }
+// rsvp <
+                messageLabel.textAlignment = .left
+            case .tag(let text):
+                messageLabel.attributedText = text
+                messageLabel.textAlignment = .center
+// >
             case .attributedText(let text):
                 messageLabel.attributedText = text
             default:

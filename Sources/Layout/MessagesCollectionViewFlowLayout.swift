@@ -164,6 +164,10 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return videoMessageSizeCalculator
         case .location:
             return locationMessageSizeCalculator
+// rsvp <
+        case .tag:
+            return attributedTextMessageSizeCalculator
+// >
         case .custom:
             return messagesLayoutDelegate.customCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView)
         }

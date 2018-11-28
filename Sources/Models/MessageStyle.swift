@@ -51,6 +51,9 @@ public enum MessageStyle {
 
         case curved
         case pointedEdge
+// rsvp <
+        case circle
+// >
 
         internal var imageNameSuffix: String {
             switch self {
@@ -58,6 +61,10 @@ public enum MessageStyle {
                 return "_tail_v2"
             case .pointedEdge:
                 return "_tail_v1"
+// rsvp <
+            case .circle:
+                return "_tail_circle"
+// >
             }
         }
     }
@@ -70,7 +77,10 @@ public enum MessageStyle {
     case bubbleTail(TailCorner, TailStyle)
     case bubbleTailOutline(UIColor, TailCorner, TailStyle)
     case custom((MessageContainerView) -> Void)
-
+// rsvp <
+    case bubbleCircle(TailCorner, TailStyle)
+// >
+    
     // MARK: - Public
 
     public var image: UIImage? {
@@ -89,7 +99,10 @@ public enum MessageStyle {
             return nil
         case .bubble, .bubbleOutline:
             break
-        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _):
+// rsvp <
+//        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _):
+        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _), .bubbleCircle(let corner, _):
+// >
             guard let cgImage = image.cgImage else { return nil }
             image = UIImage(cgImage: cgImage, scale: image.scale, orientation: corner.imageOrientation)
         }
@@ -115,7 +128,10 @@ public enum MessageStyle {
         switch self {
         case .bubble, .bubbleOutline:
             return imageName
-        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _):
+// rsvp <
+//        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _):
+        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _), .bubbleCircle(let corner, _):
+// >
             return imageName + "_" + corner.rawValue
         default:
             return nil
@@ -134,6 +150,10 @@ public enum MessageStyle {
             return "bubble_outlined" + tailStyle.imageNameSuffix
         case .none, .custom:
             return nil
+// rsvp <
+        case .bubbleCircle(_, let tailStyle):
+            return "bubble_full" + tailStyle.imageNameSuffix
+// >
         }
     }
 
