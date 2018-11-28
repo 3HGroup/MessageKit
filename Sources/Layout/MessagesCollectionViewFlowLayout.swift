@@ -148,6 +148,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     lazy open var locationMessageSizeCalculator = LocationMessageSizeCalculator(layout: self)
 // rsvp <
     lazy open var photoLikeMessageSizeCalculator = RSVPPhotoLikeMessageSizeCalculator(layout: self)
+    lazy open var rsvpSystemMessageSizeCalculator = RSVPSystemMessageSizeCalculator(layout: self)
 // >
 
     /// - Note:
@@ -172,6 +173,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return attributedTextMessageSizeCalculator
         case .photoLike:
             return photoLikeMessageSizeCalculator
+        case .rsvpSystem:
+            return rsvpSystemMessageSizeCalculator
 // >
         case .custom:
             return messagesLayoutDelegate.customCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView)

@@ -60,6 +60,7 @@ public enum MessageKind {
 // rsvp <
     case tag(NSAttributedString)
     case photoLike(MediaItem, String)
+    case rsvpSystem(RSVPSystemItem)
 //  >
 
     // MARK: - Not supported yet
