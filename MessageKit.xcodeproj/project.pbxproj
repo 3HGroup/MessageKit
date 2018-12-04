@@ -41,6 +41,8 @@
 		726EE2992174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EE2982174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift */; };
 		726EE29B217453E40079B284 /* RSVPSystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EE29A217453E40079B284 /* RSVPSystemMessageCell.swift */; };
 		726EE29D217459FE0079B284 /* RSVPSystemItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EE29C217459FE0079B284 /* RSVPSystemItem.swift */; };
+		72AA5E1A21AF66C100EE3BA6 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AA5E1921AF66C000EE3BA6 /* FLAnimatedImage.framework */; };
+		72AA5E1C21AF6A8700EE3BA6 /* RSVPAnimatedGIFMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA5E1B21AF6A8700EE3BA6 /* RSVPAnimatedGIFMessageCell.swift */; };
 		88916B2D1CF0DF2F00469F91 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88916B221CF0DF2F00469F91 /* MessageKit.framework */; };
 		8962AC8A1F87AB7D0030B058 /* MessagesCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962AC831F87AB230030B058 /* MessagesCollectionViewTests.swift */; };
 		8962AC8C1F87AB7D0030B058 /* AvatarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962AC851F87AB230030B058 /* AvatarViewTests.swift */; };
@@ -141,6 +143,8 @@
 		726EE2982174538B0079B284 /* RSVPSystemMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSystemMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		726EE29A217453E40079B284 /* RSVPSystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSystemMessageCell.swift; sourceTree = "<group>"; };
 		726EE29C217459FE0079B284 /* RSVPSystemItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSystemItem.swift; sourceTree = "<group>"; };
+		72AA5E1921AF66C000EE3BA6 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
+		72AA5E1B21AF6A8700EE3BA6 /* RSVPAnimatedGIFMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPAnimatedGIFMessageCell.swift; sourceTree = "<group>"; };
 		88916B221CF0DF2F00469F91 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88916B2C1CF0DF2F00469F91 /* MessageKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8962AC741F87AB230030B058 /* MessageKitDateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitDateFormatterTests.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C2AE7C20D4878D00F8079E /* MessageInputBar.framework in Frameworks */,
+				72AA5E1A21AF66C100EE3BA6 /* FLAnimatedImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +220,7 @@
 		1F7FC8C21FD26F22006CC979 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72AA5E1921AF66C000EE3BA6 /* FLAnimatedImage.framework */,
 				38C2AE7B20D4878D00F8079E /* MessageInputBar.framework */,
 				1F7FC8C71FD26F49006CC979 /* Nimble.framework */,
 				1F7FC8C51FD26F33006CC979 /* Quick.framework */,
@@ -233,6 +239,7 @@
 				B7A03F361F866946006AEF79 /* TextMessageCell.swift */,
 				01A40BB22164990500B4D42E /* RSVPPhotoLikeMessageCell.swift */,
 				726EE29A217453E40079B284 /* RSVPSystemMessageCell.swift */,
+				72AA5E1B21AF6A8700EE3BA6 /* RSVPAnimatedGIFMessageCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -638,6 +645,7 @@
 				1F6C040C206A2891007BDE44 /* MessageContentCell.swift in Sources */,
 				B7A03F2C1F866895006AEF79 /* DetectorType.swift in Sources */,
 				B7A03F271F866895006AEF79 /* Avatar.swift in Sources */,
+				72AA5E1C21AF6A8700EE3BA6 /* RSVPAnimatedGIFMessageCell.swift in Sources */,
 				1F82D1431FB1B75B00B81A88 /* AvatarPosition.swift in Sources */,
 				1FF377AC20087DA2004FD648 /* MessagesViewController+Keyboard.swift in Sources */,
 			);

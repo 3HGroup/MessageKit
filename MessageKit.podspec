@@ -22,4 +22,5 @@ Pod::Spec.new do |s|
 
    s.dependency 'MessageInputBar/Core'
 
+   s.dependency 'FLAnimatedImage', '~> 1.0'
 end
