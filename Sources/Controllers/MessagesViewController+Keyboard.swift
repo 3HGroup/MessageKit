@@ -81,7 +81,15 @@ extension MessagesViewController {
         guard let keyboardEndFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let keyboardEndFrame = view.convert(keyboardEndFrameInScreenCoords, from: view.window)
         
-        let newBottomInset = requiredScrollViewBottomInset(forKeyboardFrame: keyboardEndFrame)
+// < rsvp
+//        let newBottomInset = requiredScrollViewBottomInset(forKeyboardFrame: keyboardEndFrame)
+        var newBottomInset = requiredScrollViewBottomInset(forKeyboardFrame: keyboardEndFrame)
+        if let inputAccessory = self.inputAccessoryView {
+            if newBottomInset < inputAccessory.frame.height {
+                newBottomInset = inputAccessory.frame.height
+            }
+        }
+// >
         let differenceOfBottomInset = newBottomInset - messageCollectionViewBottomInset
         
         if maintainPositionOnKeyboardFrameChanged && differenceOfBottomInset != 0 {
