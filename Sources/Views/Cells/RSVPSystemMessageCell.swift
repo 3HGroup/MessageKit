@@ -61,16 +61,15 @@ open class RSVPSystemMessageCell: MessageContentCell {
             switch systemItem.style {
             case .sysDefault:
                 iconSizeContraint.constant = 0
-            case .favorite:
+            case .favorite, .tag:
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
             }
             
             imageView.image = systemItem.icon
-            messageLabel.text = systemItem.text
+            messageLabel.attributedText = systemItem.attributedText
             
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            messageLabel.textColor = textColor
-            messageLabel.font = UIFont.systemFont(ofSize: 15)
+            messageLabel.textColor = textColor 
         }
     }
 }

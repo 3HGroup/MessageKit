@@ -11,6 +11,7 @@ import Foundation
 public enum RSVPSystemMsgStyle: String {
     case sysDefault = "default"
     case favorite = "favorite"
+    case tag = "tag"
 }
 
 /// A protocol used to represent the data for a rsvp system message.
@@ -19,5 +20,5 @@ public protocol RSVPSystemItem {
     
     var icon: UIImage? { get }
     
-    var text: String { get }
+    var attributedText: NSAttributedString { get }
 }
