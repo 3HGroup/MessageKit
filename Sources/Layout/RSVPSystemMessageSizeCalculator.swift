@@ -16,7 +16,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         var iconWidth: CGFloat = 0
         if case .rsvpSystem(let systemItem) = message.kind {
             switch systemItem.style {
-            case .favorite:
+            case .favorite, .tag:
                 iconWidth = RSVP_SystemMsgCellIconSize
             default:
                 iconWidth = 0
