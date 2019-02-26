@@ -12,6 +12,7 @@ public enum RSVPSystemMsgStyle: String {
     case sysDefault = "default"
     case favorite = "favorite"
     case tag = "tag"
+    case encrypted = "encrypted"
 }
 
 /// A protocol used to represent the data for a rsvp system message.

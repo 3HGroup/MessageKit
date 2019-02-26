@@ -61,7 +61,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
             switch systemItem.style {
             case .sysDefault:
                 iconSizeContraint.constant = 0
-            case .favorite, .tag:
+            case .favorite, .tag, .encrypted:
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
             }
             
