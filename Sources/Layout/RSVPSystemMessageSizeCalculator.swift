@@ -40,7 +40,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
                                                 attributes: [.font: UIFont.systemFont(ofSize: 15)])
             
             switch systemItem.style {
-            case .sysDefault:
+            case .sysDefault, .historyDeleted:
                 iconWidth = 0
             case .favorite, .tag, .encrypted:
                 iconWidth = RSVP_SystemMsgCellIconSize
