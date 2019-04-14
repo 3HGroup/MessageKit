@@ -37,7 +37,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
             
         case .rsvpSystem(let systemItem):
             attributedText = NSAttributedString(string: systemItem.attributedText.string,
-                                                attributes: [.font: UIFont.systemFont(ofSize: 15)])
+                                                attributes: [.font: UIFont.systemFont(ofSize: 17)])
             
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
