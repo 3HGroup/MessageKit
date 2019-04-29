@@ -59,14 +59,15 @@ open class RSVPSystemMessageCell: MessageContentCell {
         
         if case .rsvpSystem(let systemItem) = message.kind {
             switch systemItem.style {
-            case .sysDefault:
+            case .sysDefault, .historyDeleted:
                 iconSizeContraint.constant = 0
-            case .favorite, .tag:
+            case .favorite, .tag, .encrypted:
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
             }
             
             imageView.image = systemItem.icon
             messageLabel.attributedText = systemItem.attributedText
+
             
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
             messageLabel.textColor = textColor 
