@@ -10,7 +10,7 @@ import UIKit
 
 let RSVP_SystemMsgCellIconSize: CGFloat = 25.0
 let RSVP_SystemMsgCellTitleHeight: CGFloat = 11.0
-let RSVP_SystemMsgCellPadding: CGFloat = 10.0
+let RSVP_SystemMsgCellPadding: CGFloat = 8.0
 
 open class RSVPSystemMessageCell: MessageContentCell {
     open var imageView: UIImageView = {
@@ -83,8 +83,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
             imageView.image = systemItem.icon
             messageLabel.attributedText = systemItem.attributedText
 
-            messageLabel.numberOfLines = 2
-            messageLabel.adjustsFontSizeToFitWidth = true
+            messageLabel.numberOfLines = 0
             
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
             messageLabel.textColor = textColor 

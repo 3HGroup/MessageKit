@@ -22,7 +22,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
                 iconWidth = 0
             }
         }
-        return maxWidth - (iconWidth + 2 * RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
+        return maxWidth - (iconWidth + (2 * (RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)))
     }
     
     open override func messageContainerSize(for message: MessageType) -> CGSize {
@@ -38,8 +38,9 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         switch message.kind {
             
         case .rsvpSystem(let systemItem):
+            let font = UIFont(name: "AvenirNext-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             attributedText = NSAttributedString(string: systemItem.attributedText.string,
-                                                attributes: [.font: UIFont.systemFont(ofSize: 17)])
+                                                attributes: [.font: font])
             
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
@@ -62,6 +63,9 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         let messageInsets = messageLabelInsets(for: message)
         messageContainerSize.width += messageInsets.horizontal
         messageContainerSize.height += messageInsets.vertical
+        
+        let messagePadding = messageContainerPadding(for: message)
+        messageContainerSize.height += messagePadding.vertical
         
         messageContainerSize.width += (iconWidth + (2 * padding))
         messageContainerSize.height += (RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding + favoritePhotoHeight)
