@@ -30,6 +30,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
     open var messageLabel = MessageLabel()
     
     var iconSizeContraint: NSLayoutConstraint!
+    var favImageViewConstraint: NSLayoutConstraint!
     
     open override func setupSubviews() {
         super.setupSubviews()
@@ -37,6 +38,11 @@ open class RSVPSystemMessageCell: MessageContentCell {
         messageContainerView.addSubview(messageLabel)
         messageContainerView.addSubview(favoriteImageView)
         setupConstraints()
+    }
+    
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        favoriteImageView.image = nil
     }
     
     open func setupConstraints() {
@@ -47,7 +53,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
         favoriteImageView.layer.cornerRadius = 10
         
         self.iconSizeContraint = imageView.widthAnchor.constraint(equalToConstant: RSVP_SystemMsgCellIconSize)
-        
+        self.favImageViewConstraint = favoriteImageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_SystemMsgCellPadding)
         NSLayoutConstraint.activate([
             self.iconSizeContraint,
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.0),
@@ -61,7 +67,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
             favoriteImageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: RSVP_SystemMsgCellPadding),
             favoriteImageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_SystemMsgCellPadding),
             favoriteImageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -RSVP_SystemMsgCellPadding),
-            favoriteImageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_SystemMsgCellPadding)
+            self.favImageViewConstraint
         ])
     }
     
@@ -76,8 +82,13 @@ open class RSVPSystemMessageCell: MessageContentCell {
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
                 iconSizeContraint.constant = 0
-            case .favorite, .tag, .encrypted, .favoritePhoto:
+                favImageViewConstraint.constant = RSVP_SystemMsgCellPadding
+            case .favorite, .tag, .encrypted:
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
+                favImageViewConstraint.constant = RSVP_SystemMsgCellPadding
+            case .favoritePhoto:
+                iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
+                favImageViewConstraint.constant = -RSVP_SystemMsgCellPadding
             }
             
             imageView.image = systemItem.icon
