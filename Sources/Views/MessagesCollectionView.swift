@@ -162,3 +162,11 @@ open class MessagesCollectionView: UICollectionView {
     }
 
 }
+
+extension MessagesCollectionView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        let translation = self.panGestureRecognizer.translation(in: self.superview)
+        let yDistanceThreshold: CGFloat = 10
+        return !(translation.y > yDistanceThreshold || translation.y < -yDistanceThreshold)
+    }
+}
