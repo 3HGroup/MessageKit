@@ -22,28 +22,35 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
                 iconWidth = 0
             }
         }
-        return maxWidth - (iconWidth + 2 * RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
+        return maxWidth - (iconWidth + (2 * (RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)))
     }
     
     open override func messageContainerSize(for message: MessageType) -> CGSize {
-        let maxWidth = messageContainerMaxWidth(for: message)
+        var maxWidth = messageContainerMaxWidth(for: message)
         
         var messageContainerSize: CGSize
         let attributedText: NSAttributedString
         
         var iconWidth: CGFloat = 0
+        var favoritePhotoHeight: CGFloat = 0
+        var padding = RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding
         
         switch message.kind {
             
         case .rsvpSystem(let systemItem):
+            let font = UIFont(name: "AvenirNext-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             attributedText = NSAttributedString(string: systemItem.attributedText.string,
-                                                attributes: [.font: UIFont.systemFont(ofSize: 17)])
+                                                attributes: [.font: font])
             
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
                 iconWidth = 0
             case .favorite, .tag, .encrypted:
                 iconWidth = RSVP_SystemMsgCellIconSize
+            case .favoritePhoto:
+                padding = 0
+                maxWidth = UIScreen.main.bounds.width * 0.7
+                favoritePhotoHeight = maxWidth
             }
         default:
             fatalError("messageContainerSize received unhandled MessageDataType: \(message.kind)")
@@ -57,8 +64,11 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         messageContainerSize.width += messageInsets.horizontal
         messageContainerSize.height += messageInsets.vertical
         
-        messageContainerSize.width += (iconWidth + 2 * RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
-        messageContainerSize.height += (RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding)
+        let messagePadding = messageContainerPadding(for: message)
+        messageContainerSize.height += messagePadding.vertical
+        
+        messageContainerSize.width += (iconWidth + (2 * padding))
+        messageContainerSize.height += (RSVP_SystemMsgCellPadding + RSVP_SystemMsgCellPadding + favoritePhotoHeight)
         
         return messageContainerSize
     }

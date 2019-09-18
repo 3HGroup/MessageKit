@@ -14,6 +14,7 @@ public enum RSVPSystemMsgStyle: String {
     case tag = "tag"
     case encrypted = "encrypted"
     case historyDeleted = "historyDeleted"
+    case favoritePhoto = "favorite-photo"
 }
 
 /// A protocol used to represent the data for a rsvp system message.
@@ -23,4 +24,6 @@ public protocol RSVPSystemItem {
     var icon: UIImage? { get }
     
     var attributedText: NSAttributedString { get }
+    
+    var favoritePhotoId: String? { get }
 }
