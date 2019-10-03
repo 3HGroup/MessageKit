@@ -48,7 +48,7 @@ open class LocationMessageCell: MessageContentCell {
 // rsvp <
         addressLabel.numberOfLines = 1
         addressLabel.lineBreakMode = .byTruncatingTail
-        addressLabel.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        addressLabel.backgroundColor = .white
         addressLabel.font = UIFont.systemFont(ofSize: 13)
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
         messageContainerView.addSubview(addressLabel)
