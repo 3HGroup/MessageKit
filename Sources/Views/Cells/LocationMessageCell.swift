@@ -35,7 +35,8 @@ open class LocationMessageCell: MessageContentCell {
     open var imageView = UIImageView()
 
 // rsvp <
-    open var addressLabel = UILabel()
+    open var titleAddressLabel = InsetLabel()
+    open var addressLabel = InsetLabel()
 // >
     
     private weak var snapShotter: MKMapSnapshotter?
@@ -49,13 +50,28 @@ open class LocationMessageCell: MessageContentCell {
         addressLabel.numberOfLines = 1
         addressLabel.lineBreakMode = .byTruncatingTail
         addressLabel.backgroundColor = UIColor.white.withAlphaComponent(0.8)
-        addressLabel.font = UIFont.systemFont(ofSize: 13)
+        addressLabel.font = UIFont.systemFont(ofSize: 11)
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
         messageContainerView.addSubview(addressLabel)
-        addressLabel.addConstraints(nil, left: messageContainerView.leftAnchor,
-                                    bottom: messageContainerView.bottomAnchor, right: messageContainerView.rightAnchor,
+        addressLabel.addConstraints(nil,
+                                    left: messageContainerView.leftAnchor,
+                                    bottom: messageContainerView.bottomAnchor,
+                                    right: messageContainerView.rightAnchor,
                                     topConstant: -1, leftConstant: 0,
-                                    bottomConstant: 0, rightConstant: 0, widthConstant: -1, heightConstant: 30)
+                                    bottomConstant: 0, rightConstant: 0, widthConstant: -1, heightConstant: 20)
+         
+        titleAddressLabel.numberOfLines = 1
+        titleAddressLabel.lineBreakMode = .byTruncatingTail
+        titleAddressLabel.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        titleAddressLabel.font = UIFont.systemFont(ofSize: 13)
+        titleAddressLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageContainerView.addSubview(titleAddressLabel)
+        titleAddressLabel.addConstraints(nil, left: messageContainerView.leftAnchor,
+                                    bottom: addressLabel.topAnchor, right: messageContainerView.rightAnchor,
+                                    topConstant: -1, leftConstant: 0,
+                                    bottomConstant: 0, rightConstant: 0, widthConstant: -1, heightConstant: 20)
+        titleAddressLabel.textInsets = UIEdgeInsets(top: 5, left: 10, bottom: 0, right: 0)
+        addressLabel.textInsets = UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 0)
 // >
         setupConstraints()
     }
@@ -85,7 +101,8 @@ open class LocationMessageCell: MessageContentCell {
         activityIndicator.startAnimating()
         
 // rsvp <
-        addressLabel.text = "  \(locationItem.address)"
+        titleAddressLabel.text = "\(locationItem.titleAddress)"
+        addressLabel.text =      "\(locationItem.address)"
 // >
 
         let snapshotOptions = MKMapSnapshotter.Options()

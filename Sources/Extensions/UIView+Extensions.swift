@@ -54,7 +54,10 @@ extension UIView {
     }
     
     internal func constraint(equalTo size: CGSize) {
-        guard superview != nil else { return }
+        guard superview != nil else {
+            return
+        }
+        
         translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
             widthAnchor.constraint(equalToConstant: size.width),

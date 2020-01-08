@@ -240,7 +240,9 @@ open class MessageLabel: UILabel {
     }
     
     private func paragraphStyle(for text: NSAttributedString) -> NSParagraphStyle {
-        guard text.length > 0 else { return NSParagraphStyle() }
+        guard text.length > 0 else {
+            return NSParagraphStyle()
+        }
         
         var range = NSRange(location: 0, length: text.length)
         let existingStyle = text.attribute(.paragraphStyle, at: 0, effectiveRange: &range) as? NSMutableParagraphStyle
@@ -254,7 +256,9 @@ open class MessageLabel: UILabel {
 
     private func updateAttributes(for detectors: [DetectorType]) {
 
-        guard let attributedText = attributedText, attributedText.length > 0 else { return }
+        guard let attributedText = attributedText, attributedText.length > 0 else {
+            return
+        }
         let mutableAttributedString = NSMutableAttributedString(attributedString: attributedText)
 
         for detector in detectors {
@@ -312,7 +316,9 @@ open class MessageLabel: UILabel {
     // MARK: - Parsing Text
 
     private func parse(text: NSAttributedString) -> [NSTextCheckingResult] {
-        guard enabledDetectors.isEmpty == false else { return [] }
+        guard enabledDetectors.isEmpty == false else {
+            return []
+        }
         let checkingTypes = enabledDetectors.reduce(0) { $0 | $1.textCheckingType.rawValue }
         let detector = try? NSDataDetector(types: checkingTypes)
         let range = NSRange(location: 0, length: text.length)
@@ -326,7 +332,9 @@ open class MessageLabel: UILabel {
         var results: [NSTextCheckingResult] = matches
 
         text.enumerateAttribute(NSAttributedString.Key.link, in: range, options: []) { value, range, _ in
-            guard let url = value as? URL else { return }
+            guard let url = value as? URL else {
+                return
+            }
             let result = NSTextCheckingResult.linkCheckingResult(range: range, url: url)
             results.append(result)
         }
@@ -336,7 +344,9 @@ open class MessageLabel: UILabel {
 
     private func setRangesForDetectors(in checkingResults: [NSTextCheckingResult]) {
 
-        guard checkingResults.isEmpty == false else { return }
+        guard checkingResults.isEmpty == false else {
+            return
+        }
         
         for result in checkingResults {
 
@@ -378,7 +388,9 @@ open class MessageLabel: UILabel {
     // MARK: - Gesture Handling
 
     private func stringIndex(at location: CGPoint) -> Int? {
-        guard textStorage.length > 0 else { return nil }
+        guard textStorage.length > 0 else {
+            return nil
+        }
 
         var location = location
 
@@ -401,7 +413,9 @@ open class MessageLabel: UILabel {
 
   open func handleGesture(_ touchLocation: CGPoint) -> Bool {
 
-        guard let index = stringIndex(at: touchLocation) else { return false }
+        guard let index = stringIndex(at: touchLocation) else {
+            return false
+        }
 
         for (detectorType, ranges) in rangesForDetectors {
             for (range, value) in ranges {
@@ -419,23 +433,33 @@ open class MessageLabel: UILabel {
         switch value {
         case let .addressComponents(addressComponents):
             var transformedAddressComponents = [String: String]()
-            guard let addressComponents = addressComponents else { return }
+            guard let addressComponents = addressComponents else {
+                return
+            }
             addressComponents.forEach { (key, value) in
                 transformedAddressComponents[key.rawValue] = value
             }
             handleAddress(transformedAddressComponents)
         case let .phoneNumber(phoneNumber):
-            guard let phoneNumber = phoneNumber else { return }
+            guard let phoneNumber = phoneNumber else {
+                return
+            }
             handlePhoneNumber(phoneNumber)
         case let .date(date):
-            guard let date = date else { return }
+            guard let date = date else {
+                return
+            }
             handleDate(date)
         case let .link(url):
-            guard let url = url else { return }
+            guard let url = url else {
+                return
+            }
             handleURL(url)
         case let .transitInfoComponents(transitInformation):
             var transformedTransitInformation = [String: String]()
-            guard let transitInformation = transitInformation else { return }
+            guard let transitInformation = transitInformation else {
+                return
+            }
             transitInformation.forEach { (key, value) in
                 transformedTransitInformation[key.rawValue] = value
             }

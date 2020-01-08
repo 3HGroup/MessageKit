@@ -38,7 +38,9 @@ open class MessagesCollectionView: UICollectionView {
 
     private var indexPathForLastItem: IndexPath? {
         let lastSection = numberOfSections - 1
-        guard lastSection >= 0, numberOfItems(inSection: lastSection) > 0 else { return nil }
+        guard lastSection >= 0, numberOfItems(inSection: lastSection) > 0 else {
+            return nil
+        }
         return IndexPath(item: numberOfItems(inSection: lastSection) - 1, section: lastSection)
     }
 
@@ -82,10 +84,14 @@ open class MessagesCollectionView: UICollectionView {
     
     @objc
     open func handleTapGesture(_ gesture: UIGestureRecognizer) {
-        guard gesture.state == .ended else { return }
+        guard gesture.state == .ended else {
+            return
+        }
         
         let touchLocation = gesture.location(in: self)
-        guard let indexPath = indexPathForItem(at: touchLocation) else { return }
+        guard let indexPath = indexPathForItem(at: touchLocation) else {
+            return
+        }
         
         let cell = cellForItem(at: indexPath) as? MessageContentCell
         cell?.handleTapGesture(gesture)

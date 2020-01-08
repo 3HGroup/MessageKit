@@ -46,16 +46,24 @@ extension MessagesViewController {
     @objc
     private func handleTextViewDidBeginEditing(_ notification: Notification) {
         if scrollsToBottomOnKeyboardBeginsEditing {
-            guard let inputTextView = notification.object as? InputTextView, inputTextView === messageInputBar.inputTextView else { return }
+            guard let inputTextView = notification.object as? InputTextView, inputTextView === messageInputBar.inputTextView else {
+                return
+            }
+            
             messagesCollectionView.scrollToBottom(animated: true)
         }
     }
 
     @objc
     private func handleKeyboardDidChangeState(_ notification: Notification) {
-        guard !isMessagesControllerBeingDismissed else { return }
+        guard !isMessagesControllerBeingDismissed else {
+            return
+        }
 
-        guard let keyboardStartFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else { return }
+        guard let keyboardStartFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else {
+            return
+        }
+        
         guard !keyboardStartFrameInScreenCoords.isEmpty else {
             // WORKAROUND for what seems to be a bug in iPad's keyboard handling in iOS 11: we receive an extra spurious frame change
             // notification when undocking the keyboard, with a zero starting frame and an incorrect end frame. The workaround is to
@@ -78,7 +86,10 @@ extension MessagesViewController {
         // to simply check whether the current keyboard frame, whatever it is (even when undocked), covers the bottom of the collection
         // view.
         
-        guard let keyboardEndFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        guard let keyboardEndFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
+        }
+        
         let keyboardEndFrame = view.convert(keyboardEndFrameInScreenCoords, from: view.window)
         
 // < rsvp
@@ -130,7 +141,10 @@ extension MessagesViewController {
     }
 
     internal func requiredInitialScrollViewBottomInset() -> CGFloat {
-        guard let inputAccessoryView = inputAccessoryView else { return 0 }
+        guard let inputAccessoryView = inputAccessoryView else {
+            return 0
+        }
+        
         return max(0, inputAccessoryView.frame.height + additionalBottomInset - automaticallyAddedBottomInset)
     }
 

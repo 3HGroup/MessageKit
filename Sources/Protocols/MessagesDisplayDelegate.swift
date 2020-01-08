@@ -189,7 +189,9 @@ public extension MessagesDisplayDelegate {
         case .emoji:
             return .clear
         default:
-            guard let dataSource = messagesCollectionView.messagesDataSource else { return .white }
+            guard let dataSource = messagesCollectionView.messagesDataSource else {
+                return .white
+            }
             return dataSource.isFromCurrentSender(message: message) ? .outgoingGreen : .incomingGray
         }
     }

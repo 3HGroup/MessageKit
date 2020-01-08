@@ -86,7 +86,9 @@ open class AvatarView: UIImageView {
     }
     
     private func setImageFrom(initials: String?) {
-        guard let initials = initials else { return }
+        guard let initials = initials else {
+            return
+        }
         image = getImageFrom(initials: initials)
     }
 
@@ -192,6 +194,5 @@ open class AvatarView: UIImageView {
 }
 
 fileprivate extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
+    var degreesToRadians: Self { return self * .pi / 180 } 
 }

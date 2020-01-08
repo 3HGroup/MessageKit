@@ -98,7 +98,9 @@ open class MessageContentCell: MessageCollectionViewCell {
 
     open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
-        guard let attributes = layoutAttributes as? MessagesCollectionViewLayoutAttributes else { return }
+        guard let attributes = layoutAttributes as? MessagesCollectionViewLayoutAttributes else {
+            return
+        }
         // Call this before other laying out other subviews
         layoutMessageContainerView(with: attributes)
         layoutBottomLabel(with: attributes)
@@ -168,7 +170,9 @@ open class MessageContentCell: MessageCollectionViewCell {
     /// Handle long press gesture, return true when gestureRecognizer's touch point in `messageContainerView`'s frame
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let touchPoint = gestureRecognizer.location(in: self)
-        guard gestureRecognizer.isKind(of: UILongPressGestureRecognizer.self) else { return false }
+        guard gestureRecognizer.isKind(of: UILongPressGestureRecognizer.self) else {
+            return false
+        }
         return messageContainerView.frame.contains(touchPoint)
     }
 

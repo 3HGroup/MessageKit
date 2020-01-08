@@ -72,7 +72,9 @@ open class TextMessageSizeCalculator: MessageSizeCalculator {
 
     open override func configure(attributes: UICollectionViewLayoutAttributes) {
         super.configure(attributes: attributes)
-        guard let attributes = attributes as? MessagesCollectionViewLayoutAttributes else { return }
+        guard let attributes = attributes as? MessagesCollectionViewLayoutAttributes else {
+            return
+        }
 
         let dataSource = messagesLayout.messagesDataSource
         let indexPath = attributes.indexPath
@@ -83,8 +85,13 @@ open class TextMessageSizeCalculator: MessageSizeCalculator {
 
         switch message.kind {
         case .attributedText(let text):
-            guard !text.string.isEmpty else { return }
-            guard let font = text.attribute(.font, at: 0, effectiveRange: nil) as? UIFont else { return }
+            guard
+                !text.string.isEmpty,
+                let font = text.attribute(.font, at: 0, effectiveRange: nil) as? UIFont
+            else {
+                return
+            }
+              
             attributes.messageLabelFont = font
         default:
             break

@@ -34,6 +34,7 @@ public protocol LocationItem {
     var size: CGSize { get }
 
 // rsvp <
+    var titleAddress: String { get }
     var address: String { get }
 // >
 }

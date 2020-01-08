@@ -254,7 +254,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     // MARK: - UICollectionViewDelegateFlowLayout
 
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let messagesFlowLayout = collectionViewLayout as? MessagesCollectionViewFlowLayout else { return .zero }
+        guard let messagesFlowLayout = collectionViewLayout as? MessagesCollectionViewFlowLayout else {
+            return .zero
+        }
+        
         return messagesFlowLayout.sizeForItem(at: indexPath)
     }
 
@@ -280,7 +283,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     }
 
     open func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else { return false }
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            return false
+        }
+        
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
 
         switch message.kind {

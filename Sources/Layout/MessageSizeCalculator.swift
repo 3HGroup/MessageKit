@@ -57,7 +57,9 @@ open class MessageSizeCalculator: CellSizeCalculator {
     public var outgoingAccessoryViewPadding = HorizontalEdgeInsets.zero
 
     open override func configure(attributes: UICollectionViewLayoutAttributes) {
-        guard let attributes = attributes as? MessagesCollectionViewLayoutAttributes else { return }
+        guard let attributes = attributes as? MessagesCollectionViewLayoutAttributes else {
+            return
+        }
 
         let dataSource = messagesLayout.messagesDataSource
         let indexPath = attributes.indexPath

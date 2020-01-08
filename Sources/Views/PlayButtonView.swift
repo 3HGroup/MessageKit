@@ -56,7 +56,9 @@ open class PlayButtonView: UIView {
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        guard !cacheFrame.equalTo(frame) else { return }
+        guard !cacheFrame.equalTo(frame) else {
+            return
+        }
         cacheFrame = frame
         
         updateTriangleConstraints()

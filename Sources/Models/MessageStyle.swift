@@ -85,14 +85,18 @@ public enum MessageStyle {
 
     public var image: UIImage? {
         
-        guard let imageCacheKey = imageCacheKey, let path = imagePath else { return nil }
+        guard let imageCacheKey = imageCacheKey, let path = imagePath else {
+            return nil
+        }
 
         let cache = MessageStyle.bubbleImageCache
 
         if let cachedImage = cache.object(forKey: imageCacheKey as NSString) {
             return cachedImage
         }
-        guard var image = UIImage(contentsOfFile: path) else { return nil }
+        guard var image = UIImage(contentsOfFile: path) else {
+            return nil
+        }
         
         switch self {
         case .none, .custom:
@@ -103,7 +107,10 @@ public enum MessageStyle {
 //        case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _):
         case .bubbleTail(let corner, _), .bubbleTailOutline(_, let corner, _), .bubbleCircle(let corner, _):
 // >
-            guard let cgImage = image.cgImage else { return nil }
+            guard let cgImage = image.cgImage else {
+                return nil
+            }
+            
             image = UIImage(cgImage: cgImage, scale: image.scale, orientation: corner.imageOrientation)
         }
         
@@ -123,7 +130,9 @@ public enum MessageStyle {
     // MARK: - Private
     
     private var imageCacheKey: String? {
-        guard let imageName = imageName else { return nil }
+        guard let imageName = imageName else {
+            return nil
+        }
         
         switch self {
         case .bubble, .bubbleOutline:
@@ -158,7 +167,10 @@ public enum MessageStyle {
     }
 
     private var imagePath: String? {
-        guard let imageName = imageName else { return nil }
+        guard let imageName = imageName else {
+            return nil
+        }
+        
         let assetBundle = Bundle.messageKitAssetBundle()
         return assetBundle.path(forResource: imageName, ofType: "png", inDirectory: "Images")
     }

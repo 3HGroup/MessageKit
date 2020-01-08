@@ -8,8 +8,7 @@
 
 import UIKit
 
-let RSVP_SystemMsgCellIconSize: CGFloat = 25.0
-let RSVP_SystemMsgCellTitleHeight: CGFloat = 11.0
+let RSVP_SystemMsgCellIconSize: CGFloat = 25.0 
 let RSVP_SystemMsgCellPadding: CGFloat = 11.0
 
 open class RSVPSystemMessageCell: MessageContentCell {

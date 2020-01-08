@@ -58,7 +58,10 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 
     public var itemWidth: CGFloat {
-        guard let collectionView = collectionView else { return 0 }
+        guard let collectionView = collectionView else {
+            return 0
+        }
+        
         return collectionView.frame.width - sectionInset.left - sectionInset.right
     }
 
@@ -124,7 +127,10 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     open override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         let context = super.invalidationContext(forBoundsChange: newBounds)
-        guard let flowLayoutContext = context as? UICollectionViewFlowLayoutInvalidationContext else { return context }
+        guard let flowLayoutContext = context as? UICollectionViewFlowLayoutInvalidationContext else {
+            return context
+        }
+        
         flowLayoutContext.invalidateFlowLayoutDelegateMetrics = shouldInvalidateLayout(forBoundsChange: newBounds)
         return flowLayoutContext
     }
