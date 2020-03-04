@@ -188,6 +188,12 @@ public extension MessagesDisplayDelegate {
         switch message.kind {
         case .emoji:
             return .clear
+        case .photoLike(_, _):
+            guard let dataSource = messagesCollectionView.messagesDataSource else {
+                return .white
+            }
+            
+            return dataSource.isFromCurrentSender(message: message) ? .outgoingLikeYellow : .incomingLikeBlue
         default:
             guard let dataSource = messagesCollectionView.messagesDataSource else {
                 return .white

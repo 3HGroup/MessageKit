@@ -35,5 +35,8 @@ extension UIColor {
     internal static let playButtonLightGray = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
 
     internal static let sendButtonBlue = UIColor(red: 15/255, green: 135/255, blue: 255/255, alpha: 1.0)
-
+    
+    internal static let incomingLikeBlue = UIColor(red: 50/255, green: 196/255, blue: 201/255, alpha: 1.0)
+    
+    internal static let outgoingLikeYellow = UIColor(red: 246/255, green: 244/255, blue: 215/255, alpha: 1.0)
 }

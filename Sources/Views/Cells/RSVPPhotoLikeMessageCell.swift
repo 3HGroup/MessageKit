@@ -56,11 +56,15 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         
         if case .photoLike(let mediaItem, let text) = message.kind {
             imageView.image = mediaItem.image ?? mediaItem.placeholderImage
-            
+
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            messageLabel.text = text
             messageLabel.textColor = textColor
-            messageLabel.font = UIFont.systemFont(ofSize: 15)
+            
+            if let font = messageLabel.messageLabelFont {
+                messageLabel.font = font
+            }
+            
+            messageLabel.text = text
             messageLabel.textAlignment = .center
         }
     }
