@@ -8,8 +8,9 @@
 
 import UIKit
 
-let RSVP_likedPhotoSize = CGSize(width: 40, height: 40)
-let RSVP_photoLikeCellPadding: CGFloat = 5.0
+let RSVP_likedPhotoSize = CGSize(width: 70, height: 70)
+let RSVP_heartSize = CGSize(width: 21, height: 21)
+let RSVP_photoLikeCellPadding: CGFloat = 8.0
 
 open class RSVPPhotoLikeMessageCell: MessageContentCell {
     
@@ -17,7 +18,14 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5.0
+        imageView.layer.cornerRadius = 10.0
+        return imageView
+    }()
+    
+    open var heartImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -26,24 +34,30 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
     open override func setupSubviews() {
         super.setupSubviews()
         messageContainerView.addSubview(imageView)
+        messageContainerView.addSubview(heartImageView)
         messageContainerView.addSubview(messageLabel)
         setupConstraints()
     }
     
     open func setupConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        heartImageView.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.constraint(equalTo: RSVP_likedPhotoSize)
+        heartImageView.constraint(equalTo: RSVP_heartSize)
         
         NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -2 * RSVP_photoLikeCellPadding),
+            imageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_photoLikeCellPadding),
             imageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
             imageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
             
-            messageLabel.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_photoLikeCellPadding),
-            messageLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -RSVP_photoLikeCellPadding),
+            messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
             messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
+            
+            heartImageView.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
+            heartImageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
+            heartImageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -RSVP_photoLikeCellPadding),
         ])
     }
     
@@ -59,11 +73,8 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
 
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
             messageLabel.textColor = textColor
-            
-            if let font = messageLabel.messageLabelFont {
-                messageLabel.font = font
-            }
-            
+            heartImageView.image = textColor == .white ? #imageLiteral(resourceName: "liked_white.png") : #imageLiteral(resourceName: "liked_green.png")
+            messageLabel.font = UIFont(name: "AvenirNext-Regular", size: 18)!
             messageLabel.text = text
             messageLabel.textAlignment = .center
         }
