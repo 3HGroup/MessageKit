@@ -52,8 +52,10 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
             imageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
             imageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
             
+            messageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
             messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
             messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
+            messageLabel.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
             
             heartImageView.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
             heartImageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
@@ -76,7 +78,6 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
             heartImageView.image = textColor == .white ? #imageLiteral(resourceName: "liked_white.png") : #imageLiteral(resourceName: "liked_green.png")
             messageLabel.font = UIFont(name: "AvenirNext-Regular", size: 18)!
             messageLabel.text = text
-            messageLabel.textAlignment = .center
         }
     }
 }
