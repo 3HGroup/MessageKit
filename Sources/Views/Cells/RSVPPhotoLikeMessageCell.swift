@@ -29,7 +29,21 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         return imageView
     }()
     
-    open var messageLabel = MessageLabel()
+    open var messageLabel: MessageLabel = {
+        let ml = MessageLabel()
+        ml.baselineAdjustment = .alignCenters
+        ml.numberOfLines = 3 
+        return ml
+    }()
+        
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        NSLayoutConstraint.activate([
+            messageLabel.heightAnchor.constraint(lessThanOrEqualToConstant: messageContainerView.frame.height),
+            messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor)
+        ])
+    }
     
     open override func setupSubviews() {
         super.setupSubviews()
@@ -50,12 +64,9 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_photoLikeCellPadding),
             imageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
-            imageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
+            imageView.bottomAnchor.constraint(greaterThanOrEqualTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
             
-            messageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
-            messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
-            messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
-            messageLabel.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
+            messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_photoLikeCellPadding),
             
             heartImageView.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
             heartImageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
