@@ -45,7 +45,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
                 iconWidth = 0
-            case .favorite, .tag, .encrypted:
+            case .favorite, .tag, .encrypted, .contacts, .expired, .rejected:
                 iconWidth = RSVP_SystemMsgCellIconSize
             case .favoritePhoto:
                 padding = 0

@@ -15,6 +15,9 @@ public enum RSVPSystemMsgStyle: String {
     case encrypted = "encrypted"
     case historyDeleted = "historyDeleted"
     case favoritePhoto = "favorite-photo"
+    case contacts = "contacts"
+    case expired = "expired"
+    case rejected = "rejected"
 }
 
 /// A protocol used to represent the data for a rsvp system message.
