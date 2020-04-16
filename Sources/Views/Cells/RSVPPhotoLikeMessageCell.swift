@@ -32,7 +32,7 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
     open var messageLabel: MessageLabel = {
         let ml = MessageLabel()
         ml.baselineAdjustment = .alignCenters
-        ml.numberOfLines = 3 
+        ml.numberOfLines = 0
         return ml
     }()
         
@@ -52,7 +52,7 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         messageContainerView.addSubview(messageLabel)
         setupConstraints()
     }
-    
+     
     open func setupConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         heartImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,11 +63,11 @@ open class RSVPPhotoLikeMessageCell: MessageContentCell {
         
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_photoLikeCellPadding),
-            imageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
-            imageView.bottomAnchor.constraint(greaterThanOrEqualTo: messageContainerView.bottomAnchor, constant: -RSVP_photoLikeCellPadding),
+            imageView.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
             
             messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_photoLikeCellPadding),
-            
+            messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
+
             heartImageView.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: RSVP_photoLikeCellPadding / 2),
             heartImageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_photoLikeCellPadding),
             heartImageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -RSVP_photoLikeCellPadding),
