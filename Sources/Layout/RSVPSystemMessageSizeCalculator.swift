@@ -16,7 +16,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         var iconWidth: CGFloat = 0
         if case .rsvpSystem(let systemItem) = message.kind {
             switch systemItem.style {
-            case .favorite, .tag, .encrypted, .contacts, .expired, .rejected:
+            case .favorite, .tag, .encrypted, .contacts, .expired, .rejected, .tagRequest:
                 iconWidth = RSVP_SystemMsgCellIconSize
             default:
                 iconWidth = 0
@@ -29,7 +29,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         var maxWidth = messageContainerMaxWidth(for: message)
         
         var messageContainerSize: CGSize
-        let attributedText: NSAttributedString
+        var attributedText: NSAttributedString
         
         var iconWidth: CGFloat = 0
         var favoritePhotoHeight: CGFloat = 0
@@ -38,7 +38,7 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
         switch message.kind {
             
         case .rsvpSystem(let systemItem):
-            let font = UIFont(name: "AvenirNext-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+            var font = UIFont(name: "AvenirNext-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             attributedText = NSAttributedString(string: systemItem.attributedText.string,
                                                 attributes: [.font: font])
             
@@ -47,6 +47,11 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
                 iconWidth = 0
             case .favorite, .tag, .encrypted, .contacts, .expired, .rejected:
                 iconWidth = RSVP_SystemMsgCellIconSize
+            case .tagRequest:
+                iconWidth = RSVP_SystemMsgCellIconSize
+                font = UIFont(name: "AvenirNext-Regular", size: 11.5) ?? UIFont.systemFont(ofSize: 11.5)
+                attributedText = NSAttributedString(string: systemItem.attributedText.string,
+                                                    attributes: [.font: font])
             case .favoritePhoto:
                 padding = 0
                 maxWidth = UIScreen.main.bounds.width * 0.7

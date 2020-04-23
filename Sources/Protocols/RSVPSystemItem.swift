@@ -18,6 +18,7 @@ public enum RSVPSystemMsgStyle: String {
     case contacts = "contacts"
     case expired = "expire"
     case rejected = "rejected"
+    case tagRequest = "tag-request"
 }
 
 /// A protocol used to represent the data for a rsvp system message.

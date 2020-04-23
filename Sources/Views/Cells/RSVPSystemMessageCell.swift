@@ -82,7 +82,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
             case .sysDefault, .historyDeleted:
                 iconSizeContraint.constant = 0
                 favImageViewConstraint.constant = RSVP_SystemMsgCellPadding
-            case .favorite, .tag, .encrypted, .contacts, .expired, .rejected:
+            case .favorite, .tag, .encrypted, .contacts, .expired, .rejected, .tagRequest:
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
                 favImageViewConstraint.constant = RSVP_SystemMsgCellPadding
             case .favoritePhoto:
