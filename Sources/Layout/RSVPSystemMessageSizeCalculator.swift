@@ -45,11 +45,11 @@ open class RSVPSystemMessageSizeCalculator: TextMessageSizeCalculator {
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
                 iconWidth = 0
-            case .favorite, .tag, .encrypted, .contacts, .expired, .rejected:
+            case .favorite, .tag, .encrypted, .expired, .rejected:
                 iconWidth = RSVP_SystemMsgCellIconSize
-            case .tagRequest:
+            case .tagRequest, .contacts:
                 iconWidth = RSVP_SystemMsgCellIconSize
-                font = UIFont(name: "AvenirNext-Regular", size: 11.5) ?? UIFont.systemFont(ofSize: 11.5)
+                font = UIFont(name: "AvenirNext-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
                 attributedText = NSAttributedString(string: systemItem.attributedText.string,
                                                     attributes: [.font: font])
             case .favoritePhoto:

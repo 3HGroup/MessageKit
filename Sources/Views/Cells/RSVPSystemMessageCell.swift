@@ -49,7 +49,9 @@ open class RSVPSystemMessageCell: MessageContentCell {
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         favoriteImageView.translatesAutoresizingMaskIntoConstraints = false
          
-        favoriteImageView.layer.cornerRadius = 10
+        favoriteImageView.layer.cornerRadius = 10   
+        messageLabel.baselineAdjustment = .alignCenters
+        messageLabel.sizeToFit()
         
         self.iconSizeContraint = imageView.widthAnchor.constraint(equalToConstant: RSVP_SystemMsgCellIconSize)
         self.favImageViewConstraint = favoriteImageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_SystemMsgCellPadding)
@@ -59,9 +61,9 @@ open class RSVPSystemMessageCell: MessageContentCell {
             imageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_SystemMsgCellPadding),
             imageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
             
-            messageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_SystemMsgCellPadding),
             messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_SystemMsgCellPadding),
             messageLabel.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -RSVP_SystemMsgCellPadding),
+            messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
             
             favoriteImageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: RSVP_SystemMsgCellPadding),
             favoriteImageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_SystemMsgCellPadding),
