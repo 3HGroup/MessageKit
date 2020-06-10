@@ -30,6 +30,13 @@ open class RSVPSystemMessageCell: MessageContentCell {
     
     var iconSizeContraint: NSLayoutConstraint!
     var favImageViewConstraint: NSLayoutConstraint!
+    var isFavouritePhoto: Bool = false {
+        didSet {
+            if oldValue == true {
+                setNeedsLayout()
+            }
+        }
+    }
     
     open override func setupSubviews() {
         super.setupSubviews()
@@ -55,21 +62,31 @@ open class RSVPSystemMessageCell: MessageContentCell {
         
         self.iconSizeContraint = imageView.widthAnchor.constraint(equalToConstant: RSVP_SystemMsgCellIconSize)
         self.favImageViewConstraint = favoriteImageView.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -RSVP_SystemMsgCellPadding)
-        NSLayoutConstraint.activate([
+ 
+        var constraints: [NSLayoutConstraint] = [
             self.iconSizeContraint,
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.0),
             imageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_SystemMsgCellPadding),
-            imageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
             
             messageLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: RSVP_SystemMsgCellPadding),
             messageLabel.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -RSVP_SystemMsgCellPadding),
-            messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor),
-            
-            favoriteImageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: RSVP_SystemMsgCellPadding),
+             
+            favoriteImageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: RSVP_SystemMsgCellPadding),
             favoriteImageView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: RSVP_SystemMsgCellPadding),
             favoriteImageView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -RSVP_SystemMsgCellPadding),
             self.favImageViewConstraint
-        ])
+        ]
+        
+        // prevent centering label and icon if favourite photo
+        if isFavouritePhoto {
+            constraints.append(imageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor))
+            constraints.append(messageLabel.centerYAnchor.constraint(equalTo: messageContainerView.centerYAnchor))
+        } else {
+            constraints.append(imageView.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_SystemMsgCellPadding))
+            constraints.append(messageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: RSVP_SystemMsgCellPadding))
+        }
+        
+        NSLayoutConstraint.activate(constraints)
     }
     
     override open func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
@@ -78,7 +95,8 @@ open class RSVPSystemMessageCell: MessageContentCell {
         guard let displayDelegate = messagesCollectionView.messagesDisplayDelegate else {
             fatalError(MessageKitError.nilMessagesDisplayDelegate)
         }
-        
+
+        isFavouritePhoto = false
         if case .rsvpSystem(let systemItem) = message.kind {
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
@@ -88,6 +106,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
                 favImageViewConstraint.constant = RSVP_SystemMsgCellPadding
             case .favoritePhoto:
+                isFavouritePhoto = true
                 iconSizeContraint.constant = RSVP_SystemMsgCellIconSize
                 favImageViewConstraint.constant = -RSVP_SystemMsgCellPadding
             }
