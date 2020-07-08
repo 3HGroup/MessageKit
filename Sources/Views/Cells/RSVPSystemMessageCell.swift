@@ -95,6 +95,7 @@ open class RSVPSystemMessageCell: MessageContentCell {
             fatalError(MessageKitError.nilMessagesDisplayDelegate)
         }
  
+        isFavouritePhoto = false
         if case .rsvpSystem(let systemItem) = message.kind {
             switch systemItem.style {
             case .sysDefault, .historyDeleted:
