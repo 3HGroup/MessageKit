@@ -9,7 +9,7 @@
 import UIKit
 import FLAnimatedImage
 
-fileprivate let logoImageViewHeight: CGFloat = 18
+let logoImageViewHeight: CGFloat = 18
 
 open class RSVPAnimatedGIFMessageCell: MessageContentCell {
     /// The image view display the media content.
@@ -29,7 +29,12 @@ open class RSVPAnimatedGIFMessageCell: MessageContentCell {
     
     /// Responsible for setting up the constraints of the cell's subviews.
     open func setupConstraints() {
-        imageView.fillSuperview()
+        imageView.addConstraints(self.messageContainerView.topAnchor,
+                                 left: self.messageContainerView.leftAnchor,
+                                 bottom: self.messageContainerView.bottomAnchor,
+                                 right: self.messageContainerView.rightAnchor,
+                                 bottomConstant: logoImageViewHeight)
+        
         waterMarkImageView.addConstraints(nil,
                                 left: self.messageContainerView.leftAnchor,
                                 bottom: self.messageContainerView.bottomAnchor,
