@@ -183,6 +183,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return rsvpSystemMessageSizeCalculator
         case .gif:
             return photoMessageSizeCalculator
+        case .firstQuestion:
+            return textMessageSizeCalculator
 // >
         case .custom:
             return messagesLayoutDelegate.customCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView)

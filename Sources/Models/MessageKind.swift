@@ -62,6 +62,7 @@ public enum MessageKind {
     case photoLike(MediaItem, String)
     case rsvpSystem(RSVPSystemItem)
     case gif(MediaItem)
+    case firstQuestion(String)
 //  >
 
     // MARK: - Not supported yet
