@@ -52,10 +52,10 @@ open class TextMessageSizeCalculator: MessageSizeCalculator {
         switch message.kind {
 // rsvp <
 //        case .attributedText(let text):
-        case .attributedText(let text), .tag(let text):
+        case .attributedText(let text), .tag(let text), .firstQuestion(let text):
 // >
             attributedText = text
-        case .text(let text), .emoji(let text), .firstQuestion(let text):
+        case .text(let text), .emoji(let text):
             attributedText = NSAttributedString(string: text, attributes: [.font: messageLabelFont])
         default:
             fatalError("messageContainerSize received unhandled MessageDataType: \(message.kind)")

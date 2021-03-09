@@ -77,7 +77,7 @@ open class TextMessageCell: MessageContentCell {
                 messageLabel.setAttributes(attributes, detector: detector)
             }
             switch message.kind {
-            case .text(let text), .emoji(let text), .firstQuestion(let text):
+            case .text(let text), .emoji(let text):
                 let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
                 messageLabel.text = text
                 messageLabel.textColor = textColor
@@ -86,7 +86,7 @@ open class TextMessageCell: MessageContentCell {
                 }
 // rsvp <
                 messageLabel.textAlignment = .left
-            case .tag(let text):
+            case .tag(let text), .firstQuestion(let text):
                 messageLabel.attributedText = text
                 messageLabel.textAlignment = .center
 // >
