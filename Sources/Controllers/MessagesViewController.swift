@@ -209,7 +209,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
 // rsvp <
-        case .tag, .firstQuestion:
+        case .tag, .firstQuestion, .vote:
             let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell

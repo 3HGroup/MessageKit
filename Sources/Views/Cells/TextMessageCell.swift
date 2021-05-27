@@ -86,7 +86,7 @@ open class TextMessageCell: MessageContentCell {
                 }
 // rsvp <
                 messageLabel.textAlignment = .left
-            case .tag(let text), .firstQuestion(let text):
+            case .tag(let text), .firstQuestion(let text), .vote(let text):
                 messageLabel.attributedText = text
                 messageLabel.textAlignment = .center
 // >

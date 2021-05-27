@@ -59,6 +59,7 @@ public enum MessageKind {
     
 // rsvp <
     case tag(NSAttributedString)
+    case vote(NSAttributedString)
     case photoLike(MediaItem, String)
     case rsvpSystem(RSVPSystemItem)
     case gif(MediaItem)

@@ -52,7 +52,7 @@ open class TextMessageSizeCalculator: MessageSizeCalculator {
         switch message.kind {
 // rsvp <
 //        case .attributedText(let text):
-        case .attributedText(let text), .tag(let text), .firstQuestion(let text):
+        case .attributedText(let text), .tag(let text), .firstQuestion(let text), .vote(let text):
 // >
             attributedText = text
         case .text(let text), .emoji(let text):

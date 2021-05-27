@@ -175,7 +175,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         case .location:
             return locationMessageSizeCalculator
 // rsvp < 
-        case .tag, .firstQuestion:
+        case .tag, .firstQuestion, .vote:
             return attributedTextMessageSizeCalculator
         case .photoLike:
             return photoLikeMessageSizeCalculator
