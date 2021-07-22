@@ -155,6 +155,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
 // rsvp <
     lazy open var photoLikeMessageSizeCalculator = RSVPPhotoLikeMessageSizeCalculator(layout: self)
     lazy open var rsvpSystemMessageSizeCalculator = RSVPSystemMessageSizeCalculator(layout: self)
+    lazy open var replyMessageSizeCalculator = ReplyMessageSizeCalculator(layout: self)
 // >
 
     /// - Note:
@@ -183,6 +184,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return rsvpSystemMessageSizeCalculator
         case .gif:
             return photoMessageSizeCalculator
+        case .reply:
+            return replyMessageSizeCalculator
 // >
         case .custom:
             return messagesLayoutDelegate.customCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView)
@@ -276,7 +279,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     /// Get all `MessageSizeCalculator`s
     open func messageSizeCalculators() -> [MessageSizeCalculator] {
-        return [textMessageSizeCalculator, attributedTextMessageSizeCalculator, emojiMessageSizeCalculator, photoMessageSizeCalculator, videoMessageSizeCalculator, locationMessageSizeCalculator]
+        return [textMessageSizeCalculator, attributedTextMessageSizeCalculator, emojiMessageSizeCalculator, photoMessageSizeCalculator, videoMessageSizeCalculator, locationMessageSizeCalculator, replyMessageSizeCalculator]
     }
     
 }
