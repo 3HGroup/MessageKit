@@ -64,6 +64,7 @@ public enum MessageKind {
     case rsvpSystem(RSVPSystemItem)
     case gif(MediaItem)
     case firstQuestion(NSAttributedString)
+    case reply(ReplyItem)
 //  >
 
     // MARK: - Not supported yet
